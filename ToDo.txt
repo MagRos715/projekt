@@ -1,0 +1,8 @@
+Moduler att bygga
+
+- SKapa huvudmapp
+- Skapa rättigheter för huvudmapp
+- Skapa kryptering av .txt
+- Åtkomst från recovery
+- Skapa ny kund
+- Generera krypterat lösenord
