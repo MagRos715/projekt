@@ -57,3 +57,4 @@ function Create-DigitalSafe {
 
     Write-Host "`n✅ Digital safe setup complete." -ForegroundColor Green
 }
+

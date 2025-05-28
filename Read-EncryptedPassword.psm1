@@ -25,3 +25,4 @@ function Read-EncryptedPassword {
         Write-Error "Failed to decrypt password. Are you the original user?"
     }
 }
+

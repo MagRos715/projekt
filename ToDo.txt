@@ -8,4 +8,4 @@ Moduler att bygga
 -* Generera krypterat lösenord
 - True random generator
 
-* Prioriterade moduler
+* Prioriterade moduler.

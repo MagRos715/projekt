@@ -59,3 +59,4 @@ function Generate-RandomPassword {
     Write-Host "Encrypted password saved to: $filePath"
     return
 }
+
