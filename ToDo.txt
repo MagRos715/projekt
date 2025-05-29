@@ -9,3 +9,5 @@ Moduler att bygga
 - True random generator
 
 * Prioriterade moduler.
+
+- Rätta basepath i Generate Random Password

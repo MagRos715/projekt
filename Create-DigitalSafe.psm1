@@ -1,5 +1,9 @@
+# Function to create the Digital Safe structure
+
 function Create-DigitalSafe {
     param (
+        
+        # Name of the main folder (default is Digital Safe)
         [string]$FolderName = "Digital Safe"
     )
 
@@ -11,50 +15,55 @@ function Create-DigitalSafe {
         return
     }
 
+    # Creates the path to main folder
     $basePath = Join-Path -Path "C:\" -ChildPath $FolderName
 
-    # Create base folder
+    # Create Digital safe main folder if it doesn't exist
     if (-not (Test-Path -Path $basePath)) {
         try {
             New-Item -Path $basePath -ItemType Directory -Force | Out-Null
-            Write-Host "✔ Folder '$FolderName' created at C:\" -ForegroundColor Green
+            Write-Host "Folder '$FolderName' created at C:\" -ForegroundColor Green
         } catch {
-            Write-Host "✖ Failed to create the folder: $_" -ForegroundColor Red
+            Write-Host "Failed to create the folder: $_" -ForegroundColor Red
             return
         }
     } else {
-        Write-Host "ℹ Folder '$FolderName' already exists at C:\" -ForegroundColor Cyan
+        Write-Host "Folder '$FolderName' already exists at C:\" -ForegroundColor Cyan
     }
 
-    # Set hidden attribute
+    # Hides the folder with hidden attribute
     try {
         (Get-Item -Path $basePath).Attributes += 'Hidden'
-        Write-Host "✔ The folder is now hidden." -ForegroundColor DarkGray
+        Write-Host "The folder is now hidden." -ForegroundColor DarkGray
     } catch {
-        Write-Host "✖ Failed to hide the folder: $_" -ForegroundColor Red
+        Write-Host "Failed to hide the folder: $_" -ForegroundColor Red
     }
 
     # Prompt for subfolders
     while ($true) {
-        $subfolder = Read-Host "📁 Enter a name for a subfolder (or press Enter to finish)"
+        $subfolder = Read-Host "Enter a name for a subfolder (or press Enter to finish)"
+        
+        # Ends the loop if enter is pressed without any input
         if ([string]::IsNullOrWhiteSpace($subfolder)) {
             break
         }
 
+        # Creates path to subfolder
         $subPath = Join-Path -Path $basePath -ChildPath $subfolder
 
+        # Creates subfolder itf it doesn't exist
         if (-not (Test-Path -Path $subPath)) {
             try {
                 New-Item -Path $subPath -ItemType Directory | Out-Null
-                Write-Host "✔ Subfolder '$subfolder' created." -ForegroundColor Green
+                Write-Host "Subfolder '$subfolder' created." -ForegroundColor Green
             } catch {
-                Write-Host "✖ Failed to create subfolder '$subfolder': $_" -ForegroundColor Red
+                Write-Host "Failed to create subfolder '$subfolder': $_" -ForegroundColor Red
             }
         } else {
-            Write-Host "ℹ Subfolder '$subfolder' already exists." -ForegroundColor Cyan
+            Write-Host "Subfolder '$subfolder' already exists." -ForegroundColor Cyan
         }
     }
-
-    Write-Host "`n✅ Digital safe setup complete." -ForegroundColor Green
+# Tell yhe user that the Digital Safe is set up
+    Write-Host "Digital safe setup complete." -ForegroundColor Green
 }
 
