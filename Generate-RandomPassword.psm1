@@ -74,5 +74,11 @@ function Generate-RandomPassword {
     # Creates a confirmation and prompts it to the user
     Write-Host "Encrypted password saved to: $filePath"
     return
+
+       # Kryptera filen med EFS
+    cipher /E "$filePath" | Out-Null
+    if (-not $Silent) {
+        Write-Host "💾 Krypterat lösenord sparat i: $filePath (EFS)"
+    }
 }
 
