@@ -11,7 +11,7 @@ function Generate-RandomPassword {
         [string]$EntryName,
 
         # Path where password will be created
-        [string]$BasePath = "C:\Lösenord"
+        [string]$BasePath = "C:\Digital Safe"
     )
 
     # Defines the length of the password
