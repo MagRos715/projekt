@@ -8,7 +8,7 @@ function Generate-RandomPassword {
 
         # Name of password to be used as name of .txt
         [Parameter(Mandatory)]
-        [string]$NamePasswordFile,
+        [String]$NamePasswordFile,
 
         # Path where password will be created
         [string]$BasePath = "C:\Digital Safe"

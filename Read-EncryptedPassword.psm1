@@ -6,14 +6,14 @@ function Read-EncryptedPassword {
 
         # Name of the .txt containing the password
         [Parameter(Mandatory)]
-        [string]$EntryName,
+        [string]$NamePasswordFile,
 
         # Path to where the passwords are stored
-        [string]$BasePath = "C:\Lösenord"
+        [string]$BasePath = "C:\Digital Safe"
     )
 
     # Creates the path to the passwordfile
-    $filePath = Join-Path $BasePath "$CustomerName\$EntryName.txt"
+    $filePath = Join-Path $BasePath "$CustomerName\$NamePasswordFile.txt"
 
     # Check if file exists
     if (-not (Test-Path $filePath)) {
