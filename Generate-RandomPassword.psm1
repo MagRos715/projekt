@@ -8,7 +8,7 @@ function Generate-RandomPassword {
 
         # Name of password to be used as name of .txt
         [Parameter(Mandatory)]
-        [string]$EntryName,
+        [string]$NamePasswordFile,
 
         # Path where password will be created
         [string]$BasePath = "C:\Digital Safe"
@@ -68,7 +68,7 @@ function Generate-RandomPassword {
     }
 
     # Creates the path to the file and saves the encrypted password
-    $filePath = Join-Path $customerPath "$EntryName.txt"
+    $filePath = Join-Path $customerPath "$NamePasswordFile.txt"
     $encrypted | Set-Content -Path $filePath -Encoding UTF8
 
     # Creates a confirmation and prompts it to the user
