@@ -27,7 +27,7 @@ function Read-EncryptedPassword {
         $encrypted = Get-Content $filePath
         
         # Converts the Secure string
-        $secure = $encrypted | ConvertTo-SecureString
+        $secure = $encrypted | ConvertTo-SecureString -ErrorAction stop
         
         # Decrypts the securestring to plain text
         $plain = [System.Net.NetworkCredential]::new("", $secure).Password
