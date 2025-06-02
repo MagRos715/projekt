@@ -64,7 +64,7 @@ function Generate-RandomPassword {
     $customerPath = Join-Path $BasePath $CustomerName
     if (-not (Test-Path $customerPath)) {
         New-Item -Path $customerPath -ItemType Directory -Force | Out-Null
-        Write-Host "Created customer folder: $customerPath"
+        Write-Host "Created customer folder: $customerPath" -ForegroundColor Green
     }
 
     # Creates the path to the file and saves the encrypted password
@@ -72,13 +72,15 @@ function Generate-RandomPassword {
     $encrypted | Set-Content -Path $filePath -Encoding UTF8
 
     # Creates a confirmation and prompts it to the user
-    Write-Host "Encrypted password saved to: $filePath"
-    return
+    Write-Host "Encrypted password saved to: $filePath" -ForegroundColor Green
 
-       # Kryptera filen med EFS
-    cipher /E "$filePath" | Out-Null
-    if (-not $Silent) {
-        Write-Host "💾 Krypterat lösenord sparat i: $filePath (EFS)"
+    # File Encryption using EFS
+
+    if (Test-Path $filePath) {
+        cipher /E "$filePath" | Out-Null
+        Write-Host "File encrypted with EFS: $filePath" -ForegroundColor Green
+    } else {
+        Write-Warning "File not found for EFS encryption: $filePath" -ForegroundColor Red
     }
 }
-
+Return
