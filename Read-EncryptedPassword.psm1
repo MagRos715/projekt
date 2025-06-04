@@ -1,6 +1,8 @@
+# Function to read an encrypted password from a file
+
 function Read-EncryptedPassword {
     param (
-        # Customer name (form subfolder)
+        # Customer name (from subfolder)
         [Parameter(Mandatory)]
         [string]$CustomerName,
 
@@ -35,7 +37,7 @@ function Read-EncryptedPassword {
         Write-Host "`nDecrypted password for '$NamePasswordFile':" -ForegroundColor Yellow
         Write-Host "`n$plain`n" -ForegroundColor White
 
-        # Wait 10 seconds and clear screen
+        # Wait 10 seconds and clear terminal
         Start-Sleep -Seconds 10
         Clear-Host
         Write-Host "Password visibility time has expired." -ForegroundColor DarkGray

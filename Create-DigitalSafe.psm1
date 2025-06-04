@@ -1,4 +1,4 @@
-# Function to create the Digital Safe structure
+# Function to create the Digital Safe folder structure
 
 function Create-DigitalSafe {
     param (
@@ -51,7 +51,7 @@ function Create-DigitalSafe {
         # Creates path to subfolder
         $subPath = Join-Path -Path $basePath -ChildPath $subfolder
 
-        # Creates subfolder itf it doesn't exist
+        # Creates subfolder if it doesn't exist
         if (-not (Test-Path -Path $subPath)) {
             try {
                 New-Item -Path $subPath -ItemType Directory | Out-Null
@@ -63,7 +63,7 @@ function Create-DigitalSafe {
             Write-Host "Subfolder '$subfolder' already exists." -ForegroundColor Cyan
         }
     }
-# Tell yhe user that the Digital Safe is set up
+# Tell the user that the Digital Safe is set up
     Write-Host "Digital safe setup complete." -ForegroundColor Green
 }
 

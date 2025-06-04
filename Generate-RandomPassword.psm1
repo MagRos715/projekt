@@ -1,4 +1,4 @@
-# Function to Generate random password in subfolder
+# Function to Generate random password and create subfolder with .txt if not exist
 
 function Generate-RandomPassword {
     param (
@@ -45,14 +45,14 @@ function Generate-RandomPassword {
         Get-RandomChar $special
     )
 
-    # Generates characters to fill the remaining charcters in password
+    # Generates characters to fill the remaining characters in password
     for ($i = 4; $i -lt $Length; $i++) {
         $passwordChars += Get-RandomChar $all
     }
 
-    # Randomizes the order of the characters and creates the final version of the password and converts it to a string
+    <# Randomizes the order of the characters and creates the final version
+    of the password and converts it to a string#>
     $password = ($passwordChars | Sort-Object {Get-Random}) -join ""
-
 
     # Encrypts the password as a secure string
     $secure = ConvertTo-SecureString -String $password -AsPlainText -Force
